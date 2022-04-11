@@ -5,6 +5,10 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pudelko", "Pudelko.csproj", "{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoUnitTest", "..\PudelkoUnitTest\PudelkoUnitTest.csproj", "{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoLibrary", "..\PudelkoLibrary\PudelkoLibrary.csproj", "{56E07A65-0F20-4AE3-BA1B-E966685064FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
