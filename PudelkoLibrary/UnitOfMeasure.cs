@@ -3,7 +3,7 @@
     public enum UnitOfMeasure
     {
         milimeter = 1,
-        centimeter = 100,
+        centimeter = 10,
         meter = 1000
     }
 }
