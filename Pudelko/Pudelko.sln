@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pudelko", "Pudelko.csproj", "{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pudelko", "Pudelko.csproj", "{78BEC145-D045-42EF-8AFF-365EDFDCAB2D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF2322F0-8738-4576-A747-0613974570AE} = {BF2322F0-8738-4576-A747-0613974570AE}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoUnitTest", "..\PudelkoUnitTest\PudelkoUnitTest.csproj", "{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PudelkoUnitTest", "..\PudelkoUnitTest\PudelkoUnitTest.csproj", "{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BF2322F0-8738-4576-A747-0613974570AE} = {BF2322F0-8738-4576-A747-0613974570AE}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoLibrary", "..\PudelkoLibrary\PudelkoLibrary.csproj", "{56E07A65-0F20-4AE3-BA1B-E966685064FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PudelkoLibrary", "..\ClassLibrary1\PudelkoLibrary.csproj", "{BF2322F0-8738-4576-A747-0613974570AE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,10 @@ Global
 		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D1D2A2D-433A-4C69-846C-E4ACAA03A23B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56E07A65-0F20-4AE3-BA1B-E966685064FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF2322F0-8738-4576-A747-0613974570AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF2322F0-8738-4576-A747-0613974570AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF2322F0-8738-4576-A747-0613974570AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF2322F0-8738-4576-A747-0613974570AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
