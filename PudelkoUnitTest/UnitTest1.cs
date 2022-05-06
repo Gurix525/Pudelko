@@ -33,6 +33,14 @@ namespace PudelkoUnitTests
             Assert.AreEqual(expectedB, p.B, delta: accuracy);
             Assert.AreEqual(expectedC, p.C, delta: accuracy);
         }
+        private static void AssertObjetosc(Pudelko p, double expectedObjetosc)
+        {
+            Assert.AreEqual(expectedObjetosc, p.Objetosc, delta: accuracy);
+        }
+        private static void AssertPole(Pudelko p, double expectedPole)
+        {
+            Assert.AreEqual(expectedPole, p.Pole, delta: accuracy);
+        }
 
         #region Constructor tests ================================
 
@@ -447,16 +455,345 @@ namespace PudelkoUnitTests
 
 
         #region Pole, Objętość ===================================
-        // ToDo
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 0.01)]
+        [DataRow(10, 0.1)]
+        [DataRow(0.001, 0.00001)]
+        public void Objetosc_1param_DefaultMeters(double a, double expectedObjetosc)
+        {
+            Pudelko p = new(a);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 0.01)]
+        [DataRow(10, 0.1)]
+        [DataRow(0.001, 0.00001)]
+        public void Objetosc_1param_Meters(double a, double expectedObjetosc)
+        {
+            Pudelko p = new(a, UnitOfMeasure.meter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(100, 0.01)]
+        [DataRow(1000, 0.1)]
+        [DataRow(0.1, 0.00001)]
+        public void Objetosc_1param_Centimeters(double a, double expectedObjetosc)
+        {
+            Pudelko p = new(a, UnitOfMeasure.centimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1000, 0.01)]
+        [DataRow(10000, 0.1)]
+        [DataRow(1, 0.00001)]
+        public void Objetosc_1param_Milimeters(double a, double expectedObjetosc)
+        {
+            Pudelko p = new(a, UnitOfMeasure.milimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 1, 0.1)]
+        [DataRow(10, 10, 10)]
+        [DataRow(0.001, 0.001, 0.0000001)]
+        [DataRow(2, 2, 0.4)]
+        public void Objetosc_2params_DefaultMeters(double a, double b, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 1, 0.1)]
+        [DataRow(10, 10, 10)]
+        [DataRow(0.001, 0.001, 0.0000001)]
+        [DataRow(2, 2, 0.4)]
+        public void Objetosc_2params_Meters(double a, double b, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, UnitOfMeasure.meter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(100, 100, 0.1)]
+        [DataRow(1000, 1000, 10)]
+        [DataRow(0.1, 0.1, 0.0000001)]
+        [DataRow(200, 200, 0.4)]
+        public void Objetosc_2params_Centimeters(double a, double b, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, UnitOfMeasure.centimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1000, 1000, 0.1)]
+        [DataRow(10000, 10000, 10)]
+        [DataRow(1, 1, 0.0000001)]
+        [DataRow(2000, 2000, 0.4)]
+        public void Objetosc_2params_Milimeters(double a, double b, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, UnitOfMeasure.milimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 1, 1, 1)]
+        [DataRow(10, 10, 10, 1000)]
+        [DataRow(0.001, 0.001, 0.001, 0.000000001)]
+        [DataRow(2, 2, 2, 8)]
+        public void Objetosc_3params_DefaultMeters(double a, double b, double c, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, c);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1, 1, 1, 1)]
+        [DataRow(10, 10, 10, 1000)]
+        [DataRow(0.001, 0.001, 0.001, 0.000000001)]
+        [DataRow(2, 2, 2, 8)]
+        public void Objetosc_3params_Meters(double a, double b, double c, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.meter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(100, 100, 100, 1)]
+        [DataRow(1000, 1000, 1000, 1000)]
+        [DataRow(0.1, 0.1, 0.1, 0.000000001)]
+        [DataRow(200, 200, 200, 8)]
+        public void Objetosc_3params_Centimeters(double a, double b, double c, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.centimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc")]
+        [DataRow(1000, 1000, 1000, 1)]
+        [DataRow(10000, 10000, 10000, 1000)]
+        [DataRow(1, 1, 1, 0.000000001)]
+        [DataRow(2000, 2000, 2000, 8)]
+        public void Objetosc_3params_Milimeters(double a, double b, double c, double expectedObjetosc)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.milimeter);
+            AssertObjetosc(p, expectedObjetosc);
+        }
+
+        [DataTestMethod, TestCategory("Pole")]
+        [DataRow(1, 1, 1, 6)]
+        [DataRow(1, 2, 3, 22)]
+        [DataRow(10, 10, 10, 600)]
+        [DataRow(0.001, 0.001, 0.001, 0.000006)]
+        [DataRow(0.001, 0.002, 0.003, 0.000022)]
+        public void Pole_Meters(double a, double b, double c, double expectedPole)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.meter);
+            AssertPole(p, expectedPole);
+        }
+
+        [DataTestMethod, TestCategory("Pole")]
+        [DataRow(100, 100, 100, 6)]
+        [DataRow(100, 200, 300, 22)]
+        [DataRow(1000, 1000, 1000, 600)]
+        [DataRow(0.1, 0.1, 0.1, 0.000006)]
+        [DataRow(0.1, 0.2, 0.3, 0.000022)]
+        public void Pole_Centimeters(double a, double b, double c, double expectedPole)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.centimeter);
+            AssertPole(p, expectedPole);
+        }
+
+        [DataTestMethod, TestCategory("Pole")]
+        [DataRow(1000, 1000, 1000, 6)]
+        [DataRow(1000, 2000, 3000, 22)]
+        [DataRow(10000, 10000, 10000, 600)]
+        [DataRow(1, 1, 1, 0.000006)]
+        [DataRow(1, 2, 3, 0.000022)]
+        public void Pole_Milimeters(double a, double b, double c, double expectedPole)
+        {
+            Pudelko p = new(a, b, c, UnitOfMeasure.milimeter);
+            AssertPole(p, expectedPole);
+        }
 
         #endregion
 
         #region Equals ===========================================
-        // ToDo
+        
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, 1, 1, 1, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 1, 2, 1, 1, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 3, 3, 2, 1, UnitOfMeasure.meter)]
+        [DataRow(10, 5, 10, 5, 10, 10, UnitOfMeasure.meter)]
+        [DataRow(0.1, 0.1, 0.1, 0.1, 0.1, 0.1, UnitOfMeasure.meter)]
+        [DataRow(0.2, 0.3, 0.4, 0.3, 0.4, 0.2, UnitOfMeasure.meter)]
+        [DataRow(0.002, 0.003, 0.004, 0.003, 0.004, 0.002, UnitOfMeasure.meter)]
+        [DataRow(0.001, 0.001, 0.001, 0.001, 0.001, 0.001, UnitOfMeasure.meter)]
+        public void Equals_SameUnits(double a1, double b1, double c1, double a2, double b2, double c2, UnitOfMeasure unit)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit);
+            Pudelko p2 = new(a2, b2, c2, unit);
+            Assert.AreEqual(p1, p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 100, 100, 100, UnitOfMeasure.centimeter)]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 1000, 1000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(100, 100, 100, UnitOfMeasure.centimeter, 1000, 1000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 1000, 1000, 1000, UnitOfMeasure.centimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 10000, 10000, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(1000, 1000, 1000, UnitOfMeasure.centimeter, 10000, 10000, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 0.1, 0.1, 0.1, UnitOfMeasure.centimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 1, 1, 1, UnitOfMeasure.milimeter)]
+        [DataRow(0.1, 0.1, 0.1, UnitOfMeasure.centimeter, 1, 1, 1, UnitOfMeasure.milimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 300, 400, 200, UnitOfMeasure.centimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 3000, 4000, 2000, UnitOfMeasure.milimeter)]
+        [DataRow(200, 300, 400, UnitOfMeasure.centimeter, 3000, 4000, 2000, UnitOfMeasure.milimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 0.3, 0.4, 0.2, UnitOfMeasure.centimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 3, 4, 2, UnitOfMeasure.milimeter)]
+        [DataRow(0.2, 0.3, 0.4, UnitOfMeasure.centimeter, 3, 4, 2, UnitOfMeasure.milimeter)]
+        public void Equals_DifferentUnits(double a1, double b1, double c1, UnitOfMeasure unit1, double a2, double b2, double c2, UnitOfMeasure unit2)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit1);
+            Pudelko p2 = new(a2, b2, c2, unit2);
+            Assert.AreEqual(p1, p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, 1, 1, 2, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 1, 2, 1, 2, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 3, 3, 2, 2, UnitOfMeasure.meter)]
+        [DataRow(10, 5, 10, 5, 10, 9, UnitOfMeasure.meter)]
+        [DataRow(0.1, 0.1, 0.1, 0.1, 0.1, 0.2, UnitOfMeasure.meter)]
+        [DataRow(0.2, 0.3, 0.4, 0.3, 0.4, 0.3, UnitOfMeasure.meter)]
+        [DataRow(0.002, 0.003, 0.004, 0.003, 0.004, 0.042, UnitOfMeasure.meter)]
+        [DataRow(0.001, 0.001, 0.001, 0.001, 0.001, 0.601, UnitOfMeasure.meter)]
+        public void NotEquals_SameUnits(double a1, double b1, double c1, double a2, double b2, double c2, UnitOfMeasure unit)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit);
+            Pudelko p2 = new(a2, b2, c2, unit);
+            Assert.AreNotEqual(p1, p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 100, 100, 120, UnitOfMeasure.centimeter)]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 1000, 1000, 3000, UnitOfMeasure.milimeter)]
+        [DataRow(100, 100, 100, UnitOfMeasure.centimeter, 1000, 4000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 1000, 1000, 500, UnitOfMeasure.centimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 10000, 1, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(1000, 1000, 1000, UnitOfMeasure.centimeter, 10000, 2, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 0.1, 0.2, 0.1, UnitOfMeasure.centimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 1, 10, 1, UnitOfMeasure.milimeter)]
+        [DataRow(0.1, 0.1, 0.1, UnitOfMeasure.centimeter, 1, 100, 1, UnitOfMeasure.milimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 300, 400, 222, UnitOfMeasure.centimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 3000, 4000, 4000, UnitOfMeasure.milimeter)]
+        [DataRow(200, 300, 400, UnitOfMeasure.centimeter, 3000, 4000, 4000, UnitOfMeasure.milimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 0.3, 0.4, 0.4, UnitOfMeasure.centimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 3, 4, 4, UnitOfMeasure.milimeter)]
+        [DataRow(0.2, 0.3, 0.4, UnitOfMeasure.centimeter, 3, 4, 4, UnitOfMeasure.milimeter)]
+        public void NotEquals_DifferentUnits(double a1, double b1, double c1, UnitOfMeasure unit1, double a2, double b2, double c2, UnitOfMeasure unit2)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit1);
+            Pudelko p2 = new(a2, b2, c2, unit2);
+            Assert.AreNotEqual(p1, p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, 1, 1, 1, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 1, 2, 1, 1, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 3, 3, 2, 1, UnitOfMeasure.meter)]
+        [DataRow(10, 5, 10, 5, 10, 10, UnitOfMeasure.meter)]
+        [DataRow(0.1, 0.1, 0.1, 0.1, 0.1, 0.1, UnitOfMeasure.meter)]
+        [DataRow(0.2, 0.3, 0.4, 0.3, 0.4, 0.2, UnitOfMeasure.meter)]
+        [DataRow(0.002, 0.003, 0.004, 0.003, 0.004, 0.002, UnitOfMeasure.meter)]
+        [DataRow(0.001, 0.001, 0.001, 0.001, 0.001, 0.001, UnitOfMeasure.meter)]
+        public void Equals_Operator_SameUnits(double a1, double b1, double c1, double a2, double b2, double c2, UnitOfMeasure unit)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit);
+            Pudelko p2 = new(a2, b2, c2, unit);
+            Assert.IsTrue(p1 == p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 100, 100, 100, UnitOfMeasure.centimeter)]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 1000, 1000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(100, 100, 100, UnitOfMeasure.centimeter, 1000, 1000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 1000, 1000, 1000, UnitOfMeasure.centimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 10000, 10000, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(1000, 1000, 1000, UnitOfMeasure.centimeter, 10000, 10000, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 0.1, 0.1, 0.1, UnitOfMeasure.centimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 1, 1, 1, UnitOfMeasure.milimeter)]
+        [DataRow(0.1, 0.1, 0.1, UnitOfMeasure.centimeter, 1, 1, 1, UnitOfMeasure.milimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 300, 400, 200, UnitOfMeasure.centimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 3000, 4000, 2000, UnitOfMeasure.milimeter)]
+        [DataRow(200, 300, 400, UnitOfMeasure.centimeter, 3000, 4000, 2000, UnitOfMeasure.milimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 0.3, 0.4, 0.2, UnitOfMeasure.centimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 3, 4, 2, UnitOfMeasure.milimeter)]
+        [DataRow(0.2, 0.3, 0.4, UnitOfMeasure.centimeter, 3, 4, 2, UnitOfMeasure.milimeter)]
+        public void Equals_Operator_DifferentUnits(double a1, double b1, double c1, UnitOfMeasure unit1, double a2, double b2, double c2, UnitOfMeasure unit2)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit1);
+            Pudelko p2 = new(a2, b2, c2, unit2);
+            Assert.IsTrue(p1 == p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, 1, 1, 2, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 1, 2, 1, 2, UnitOfMeasure.meter)]
+        [DataRow(1, 2, 3, 3, 2, 2, UnitOfMeasure.meter)]
+        [DataRow(10, 5, 10, 5, 10, 9, UnitOfMeasure.meter)]
+        [DataRow(0.1, 0.1, 0.1, 0.1, 0.1, 0.2, UnitOfMeasure.meter)]
+        [DataRow(0.2, 0.3, 0.4, 0.3, 0.4, 0.3, UnitOfMeasure.meter)]
+        [DataRow(0.002, 0.003, 0.004, 0.003, 0.004, 0.042, UnitOfMeasure.meter)]
+        [DataRow(0.001, 0.001, 0.001, 0.001, 0.001, 0.601, UnitOfMeasure.meter)]
+        public void NotEquals_Operator_SameUnits(double a1, double b1, double c1, double a2, double b2, double c2, UnitOfMeasure unit)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit);
+            Pudelko p2 = new(a2, b2, c2, unit);
+            Assert.IsTrue(p1 != p2);
+        }
+
+        [DataTestMethod, TestCategory("Equals")]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 100, 100, 120, UnitOfMeasure.centimeter)]
+        [DataRow(1, 1, 1, UnitOfMeasure.meter, 1000, 1000, 3000, UnitOfMeasure.milimeter)]
+        [DataRow(100, 100, 100, UnitOfMeasure.centimeter, 1000, 4000, 1000, UnitOfMeasure.milimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 1000, 1000, 500, UnitOfMeasure.centimeter)]
+        [DataRow(10, 10, 10, UnitOfMeasure.meter, 10000, 1, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(1000, 1000, 1000, UnitOfMeasure.centimeter, 10000, 2, 10000, UnitOfMeasure.milimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 0.1, 0.2, 0.1, UnitOfMeasure.centimeter)]
+        [DataRow(0.001, 0.001, 0.001, UnitOfMeasure.meter, 1, 10, 1, UnitOfMeasure.milimeter)]
+        [DataRow(0.1, 0.1, 0.1, UnitOfMeasure.centimeter, 1, 100, 1, UnitOfMeasure.milimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 300, 400, 222, UnitOfMeasure.centimeter)]
+        [DataRow(2, 3, 4, UnitOfMeasure.meter, 3000, 4000, 4000, UnitOfMeasure.milimeter)]
+        [DataRow(200, 300, 400, UnitOfMeasure.centimeter, 3000, 4000, 4000, UnitOfMeasure.milimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 0.3, 0.4, 0.4, UnitOfMeasure.centimeter)]
+        [DataRow(0.002, 0.003, 0.004, UnitOfMeasure.meter, 3, 4, 4, UnitOfMeasure.milimeter)]
+        [DataRow(0.2, 0.3, 0.4, UnitOfMeasure.centimeter, 3, 4, 4, UnitOfMeasure.milimeter)]
+        public void NotEquals_Operator_DifferentUnits(double a1, double b1, double c1, UnitOfMeasure unit1, double a2, double b2, double c2, UnitOfMeasure unit2)
+        {
+            Pudelko p1 = new(a1, b1, c1, unit1);
+            Pudelko p2 = new(a2, b2, c2, unit2);
+            Assert.IsTrue(p1 != p2);
+        }
+
         #endregion
 
         #region Operators overloading ===========================
-        // ToDo
+
+        [DataTestMethod, TestCategory("Adding")]
+        [DataRow(1, 1, 1, 1, 1, 1, 2)]
+        [DataRow(1, 2, 1, 1, 2, 1, 4)]
+        public void Adding_Operator(double a1, double b1, double c1, double a2, double b2, double c2, double expectedObjetosc)
+        {
+            Pudelko p1 = new(a1, b1, c1);
+            Pudelko p2 = new(a2, b2, c2);
+            Assert.IsTrue((p1 + p2).Objetosc == expectedObjetosc, (p1+p2).Objetosc.ToString());
+        }
+
         #endregion
 
         #region Conversions =====================================

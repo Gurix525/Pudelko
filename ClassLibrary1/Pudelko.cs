@@ -33,7 +33,7 @@ namespace PudelkoLibrary
         }
         public double Pole
         {
-            get => Math.Round(A * B * 2 + A * B * 2 + B * C * 2, 6);
+            get => Math.Round(A * B * 2 + A * C * 2 + B * C * 2, 6);
         }
         public double this[int index]
         {
