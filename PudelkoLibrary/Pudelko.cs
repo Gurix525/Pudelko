@@ -13,7 +13,7 @@ namespace PudelkoLibrary
         private readonly double _b;
         private readonly double _c;
 
-        private ArgumentOutOfRangeException argumentOutOfRange = new("Dimension must be positive and lesser or equal to 10m.");
+        private ArgumentOutOfRangeException argumentOutOfRange = new("Dimension of a new Pudelko must be positive and lesser or equal to 10m.");
 
         public double A
         {
@@ -82,29 +82,30 @@ namespace PudelkoLibrary
 
         public override string ToString()
         {
-            return $"{A} m × {B} m × {A} m";
+            return $"{String.Format("{0:0.000}", A)} m × {String.Format("{0:0.000}", B)} m × {String.Format("{0:0.000}", C)} m";
         }
         public string ToString(string? format)
         {
+            if (format == null) format = "m";
             var multiplier = format switch
             {
                 "mm" => 1000,
                 "cm" => 100,
                 "m" => 1,
-                _ => throw new FormatException(),
+                _ => throw new FormatException()
             };
-            return $"{A * multiplier} {format} × {B * multiplier} {format} × {C * multiplier} {format}";
+            var stringFormat = format switch
+            {
+                "mm" => "{0:0}",
+                "cm" => "{0:0.0}",
+                "m" => "{0:0.000}",
+                _ => throw new FormatException()
+            };
+            return $"{String.Format(stringFormat, A * multiplier)} {format} × {String.Format(stringFormat, B * multiplier)} {format} × {String.Format(stringFormat, C * multiplier)} {format}";
         }
         public string ToString(string? format, IFormatProvider? formatProvider)
         {
-            var multiplier = format switch
-            {
-                "mm" => 1000,
-                "cm" => 100,
-                "m" => 1,
-                _ => throw new FormatException(),
-            };
-            return $"{A * multiplier} {format} × {B * multiplier} {format} × {C * multiplier} {format}";
+            return ToString(format);
         }
         public bool Equals(Pudelko? other)
         {
@@ -128,14 +129,40 @@ namespace PudelkoLibrary
         public static bool operator !=(Pudelko p1, Pudelko p2) => !(p1 == p2);
         public static Pudelko operator +(Pudelko p1, Pudelko p2)
         {
-            List<double> leftDimensions = new() { p1.A, p1.B, p1.C};
-            List<double> rightDimensions = new() { p2.A, p2.B, p2.C};
-            leftDimensions.Sort();
-            rightDimensions.Sort();
-            double a = leftDimensions[2] > rightDimensions[2] ? leftDimensions[2] : rightDimensions[2];
-            double b = leftDimensions[1] > rightDimensions[1] ? leftDimensions[1] : rightDimensions[1];
-            double c = leftDimensions[0] + rightDimensions[0];
-            return new Pudelko(a, b, c);
+            List<double> leftDimensions = new List<double>((double[])p1).OrderByDescending(x => x).ToList();
+            List<double> rightDimensions = new List<double>((double[])p2).OrderByDescending(x => x).ToList();
+            Pudelko greater = p1;
+            Pudelko lesser = p2;
+            for (int i = 0; i < 3; i++)
+            {
+                if (leftDimensions[i] == rightDimensions[i]) continue;
+                else if (leftDimensions[i] > rightDimensions[i])
+                {
+                    greater = p1;
+                    lesser = p2;
+                    break;
+                }
+                else if (leftDimensions[i] < rightDimensions[i])
+                {
+                    greater = p2;
+                    lesser = p1;
+                    break;
+                }
+            }
+            List<Pudelko> temporalPudelko = new();
+            temporalPudelko.Add(new(greater.A + lesser.A, greater.B, greater.C));
+            temporalPudelko.Add(new(greater.A + lesser.B, greater.B, greater.C));
+            temporalPudelko.Add(new(greater.A + lesser.C, greater.B, greater.C));
+            temporalPudelko.Add(new(greater.A, greater.B + lesser.A, greater.C));
+            temporalPudelko.Add(new(greater.A, greater.B + lesser.B, greater.C));
+            temporalPudelko.Add(new(greater.A, greater.B + lesser.C, greater.C));
+            temporalPudelko.Add(new(greater.A, greater.B, greater.C + lesser.A));
+            temporalPudelko.Add(new(greater.A, greater.B, greater.C + lesser.B));
+            temporalPudelko.Add(new(greater.A, greater.B, greater.C + lesser.C));
+            temporalPudelko = temporalPudelko.OrderBy(x => x.Objetosc).ToList();
+
+            if (temporalPudelko.Count > 0) return temporalPudelko[0];
+            else throw new Exception("It is not possible to create a pudelko containing the two given pudelkos.");
         }
         public static explicit operator double[](Pudelko p) => new double[3] { p.A, p.B, p.C };
         public static implicit operator Pudelko(ValueTuple<int, int, int> tuple) => new(tuple.Item1, tuple.Item2, tuple.Item3, UnitOfMeasure.milimeter);
@@ -168,7 +195,7 @@ namespace PudelkoLibrary
         }
         public PudelkoEnum GetEnumerator()
         {
-            return new PudelkoEnum(new double[3] {A, B, C});
+            return new PudelkoEnum(new double[3] { A, B, C });
         }
         public override int GetHashCode()
         {
