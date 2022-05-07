@@ -161,6 +161,15 @@ namespace PudelkoLibrary
             temporalPudelko.Add(new(greater.A, greater.B, greater.C + lesser.C));
             temporalPudelko = temporalPudelko.OrderBy(x => x.Objetosc).ToList();
 
+            for (int i = 0; i < temporalPudelko.Count; i++)
+            {
+                if (temporalPudelko[i].Objetosc < greater.Objetosc + lesser.Objetosc)
+                {
+                    temporalPudelko.RemoveAt(i);
+                    i--;
+                }
+            }
+
             if (temporalPudelko.Count > 0) return temporalPudelko[0];
             else throw new Exception("It is not possible to create a pudelko containing the two given pudelkos.");
         }

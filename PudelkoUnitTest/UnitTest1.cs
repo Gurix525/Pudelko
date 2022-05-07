@@ -787,6 +787,14 @@ namespace PudelkoUnitTests
         [DataTestMethod, TestCategory("Adding")]
         [DataRow(1, 1, 1, 1, 1, 1, 2)]
         [DataRow(1, 2, 1, 1, 2, 1, 4)]
+        [DataRow(3, 3, 3, 1, 1, 1, 36)]
+        [DataRow(5, 5, 1, 4, 4, 1, 45)]
+        [DataRow(5, 5, 1, 5, 1, 1, 30)]
+        [DataRow(0.001, 0.001, 0.001, 0.001, 0.001, 0.001, 0.000000002)]
+        [DataRow(0.001, 0.002, 0.001, 0.001, 0.002, 0.001, 0.000000004)]
+        [DataRow(0.003, 0.003, 0.003, 0.001, 0.001, 0.001, 0.000000036)]
+        [DataRow(0.005, 0.005, 0.001, 0.004, 0.004, 0.001, 0.000000045)]
+        [DataRow(0.005, 0.005, 0.001, 0.005, 0.001, 0.001, 0.000000030)]
         public void Adding_Operator(double a1, double b1, double c1, double a2, double b2, double c2, double expectedObjetosc)
         {
             Pudelko p1 = new(a1, b1, c1);
